@@ -2,7 +2,6 @@
 <% if rental_house.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(rental_house.errors.count, "error") %> prohibited this rental_house from being saved:</h2>
-
   <ul>
     <% rental_house.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -10,27 +9,22 @@
   </ul>
 </div>
 <% end %>
-
 <div class="field">
   <%= form.label '物件名' %>
   <%= form.text_field :name %>
 </div>
-
 <div class="field">
   <%= form.label '賃料' %>
   <%= form.number_field :fee %>円
 </div>
-
 <div class="field">
   <%= form.label '住所' %>
   <%= form.text_area :address %>
 </div>
-
 <div class="field">
   <%= form.label '築年数' %>
   <%= form.number_field :age %>年
 </div>
-
 <div class="field_remarks">
   <%= form.label '備考' %>
   <%= form.text_area :remarks %>
