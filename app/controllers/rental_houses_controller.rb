@@ -6,6 +6,7 @@ class RentalHousesController < ApplicationController
   end
 
   def show
+    @rental_houses = Station.all
   end
 
   def new

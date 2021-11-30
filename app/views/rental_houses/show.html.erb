@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<h1>閲覧</h1>
+<br>
 <p>
   <strong>物件名:</strong>
   <%= @rental_house.name %>
@@ -20,10 +21,29 @@
   <%= @rental_house.age %>年
 </p>
 
+<div class=field_remarks>
+  <p>
+    <strong>備考:</strong>
+    <%= @rental_house.remarks %>
+  </p>
+</div>
+<br>
+<% n = 0 %>
+<% @rental_houses.each do |station|%>
+<h3>最寄駅<%= n += 1 %></h3>
 <p>
-  <strong>備考:</strong>
-  <%= @rental_house.remarks %>
+  <strong>路線名:</strong>
+  <%= station.route_name %>
 </p>
-
+<p>
+  <strong>駅名:</strong>
+  <%= station.name %>
+</p>
+<p>
+  <strong>徒歩分数:</strong>
+  <%= station.min_on_foot %>分
+</p>
+<% end %>
+<br>
 <%= link_to '編集', edit_rental_house_path(@rental_house) %> |
 <%= link_to '戻る', rental_houses_path %>
