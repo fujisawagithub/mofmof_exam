@@ -1,25 +1,20 @@
 class RentalHousesController < ApplicationController
   before_action :set_rental_house, only: %i[ show edit update destroy ]
 
-  # GET /rental_houses or /rental_houses.json
   def index
     @rental_houses = RentalHouse.all
   end
 
-  # GET /rental_houses/1 or /rental_houses/1.json
   def show
   end
 
-  # GET /rental_houses/new
   def new
     @rental_house = RentalHouse.new
   end
 
-  # GET /rental_houses/1/edit
   def edit
   end
 
-  # POST /rental_houses or /rental_houses.json
   def create
     @rental_house = RentalHouse.new(rental_house_params)
 
@@ -34,7 +29,6 @@ class RentalHousesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /rental_houses/1 or /rental_houses/1.json
   def update
     respond_to do |format|
       if @rental_house.update(rental_house_params)
@@ -47,7 +41,6 @@ class RentalHousesController < ApplicationController
     end
   end
 
-  # DELETE /rental_houses/1 or /rental_houses/1.json
   def destroy
     @rental_house.destroy
     respond_to do |format|
@@ -57,13 +50,11 @@ class RentalHousesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rental_house
-      @rental_house = RentalHouse.find(params[:id])
-    end
+  def set_rental_house
+    @rental_house = RentalHouse.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def rental_house_params
-      params.require(:rental_house).permit(:name, :fee, :address, :age, :remarks)
-    end
+  def rental_house_params
+    params.require(:rental_house).permit(:name, :fee, :address, :age, :remarks)
+  end
 end
