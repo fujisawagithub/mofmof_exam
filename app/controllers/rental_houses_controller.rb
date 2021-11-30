@@ -10,9 +10,11 @@ class RentalHousesController < ApplicationController
 
   def new
     @rental_house = RentalHouse.new
+    @rental_house.stations.build
   end
 
   def edit
+    @rental_house.stations.build
   end
 
   def create
@@ -32,7 +34,7 @@ class RentalHousesController < ApplicationController
   def update
     respond_to do |format|
       if @rental_house.update(rental_house_params)
-        format.html { redirect_to @rental_house, notice: "Rental house was successfully updated." }
+        format.html { redirect_to @rental_house, notice: "更新しました！" }
         format.json { render :show, status: :ok, location: @rental_house }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,7 +46,7 @@ class RentalHousesController < ApplicationController
   def destroy
     @rental_house.destroy
     respond_to do |format|
-      format.html { redirect_to rental_houses_url, notice: "Rental house was successfully destroyed." }
+      format.html { redirect_to rental_houses_url, notice: "削除しました！" }
       format.json { head :no_content }
     end
   end
@@ -55,6 +57,7 @@ class RentalHousesController < ApplicationController
   end
 
   def rental_house_params
-    params.require(:rental_house).permit(:name, :fee, :address, :age, :remarks)
+    params.require(:rental_house).permit(:name, :fee, :address, :age, :remarks,stations_attributes: %i(
+      id _destroy route_name name min_on_foot))
   end
 end

@@ -3,6 +3,6 @@ class RentalHouse < ApplicationRecord
   validates :fee, presence: true
   validates :address, presence: true
   validates :age, presence: true
-  has_many :stations
+  has_many :stations,dependent: :destroy
   accepts_nested_attributes_for :stations, allow_destroy: true
 end
