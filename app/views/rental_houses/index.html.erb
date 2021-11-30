@@ -18,9 +18,9 @@
     <% @rental_houses.each do |rental_house| %>
     <tr>
       <td><%= rental_house.name %></td>
-      <td><%= rental_house.fee %></td>
+      <td><%= rental_house.fee.to_s(:delimited) %><%='円'%></td>
       <td><%= rental_house.address %></td>
-      <td><%= rental_house.age %></td>
+      <td><%= rental_house.age %><%='年'%></td>
       <td><%= rental_house.remarks %></td>
       <td><%= link_to '詳細', rental_house %></td>
       <td><%= link_to '編集', edit_rental_house_path(rental_house) %></td>

@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>物件名:</strong>
   <%= @rental_house.name %>
 </p>
 
 <p>
-  <strong>Fee:</strong>
-  <%= @rental_house.fee %>
+  <strong>賃料:</strong>
+  <%= @rental_house.fee %>円
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>住所:</strong>
   <%= @rental_house.address %>
 </p>
 
 <p>
-  <strong>Age:</strong>
-  <%= @rental_house.age %>
+  <strong>築年数:</strong>
+  <%= @rental_house.age %>年
 </p>
 
 <p>
-  <strong>Remarks:</strong>
+  <strong>備考:</strong>
   <%= @rental_house.remarks %>
 </p>
 
-<%= link_to 'Edit', edit_rental_house_path(@rental_house) %> |
-<%= link_to 'Back', rental_houses_path %>
+<%= link_to '編集', edit_rental_house_path(@rental_house) %> |
+<%= link_to '戻る', rental_houses_path %>
