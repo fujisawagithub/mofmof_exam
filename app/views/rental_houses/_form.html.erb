@@ -35,6 +35,7 @@
   <%= form.label '備考' %>
   <%= form.text_area :remarks %>
 </div>
+
 <% n = 0 %>
 <%= form.fields_for :stations do |f|%>
 <h3>最寄駅<%= n += 1 %></h3>

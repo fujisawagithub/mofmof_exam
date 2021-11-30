@@ -28,9 +28,9 @@
   </p>
 </div>
 <br>
-<% n = 0 %>
-<% @rental_houses.each do |station|%>
-<h3>最寄駅<%= n += 1 %></h3>
+
+<% @station.each.with_index(1) do |station,n|%>
+<h3>最寄駅<%= n %></h3>
 <p>
   <strong>路線名:</strong>
   <%= station.route_name %>

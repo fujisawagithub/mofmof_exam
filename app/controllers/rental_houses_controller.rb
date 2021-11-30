@@ -1,6 +1,6 @@
 class RentalHousesController < ApplicationController
   before_action :set_rental_house, only: %i[ show edit update destroy ]
-
+  before_action :set_station, only: %i[show edit update destroy]
   def index
     @rental_houses = RentalHouse.all
   end
@@ -11,7 +11,7 @@ class RentalHousesController < ApplicationController
 
   def new
     @rental_house = RentalHouse.new
-    @rental_house.stations.build
+    2.times{@rental_house.stations.build}
   end
 
   def edit
@@ -23,7 +23,7 @@ class RentalHousesController < ApplicationController
 
     respond_to do |format|
       if @rental_house.save
-        format.html { redirect_to @rental_house, notice: "Rental house was successfully created." }
+        format.html { redirect_to @rental_house, notice: "登録しました！" }
         format.json { render :show, status: :created, location: @rental_house }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +56,9 @@ class RentalHousesController < ApplicationController
   def set_rental_house
     @rental_house = RentalHouse.find(params[:id])
   end
-
+  def set_station
+    @station = Station.where(rental_house_id: @rental_house.id)
+  end
   def rental_house_params
     params.require(:rental_house).permit(:name, :fee, :address, :age, :remarks,stations_attributes: %i(
       id _destroy route_name name min_on_foot))
